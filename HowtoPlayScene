@@ -1,0 +1,86 @@
+using UnityEngine;
+using System.Collections;
+
+public class HowToPlayScene : MonoBehaviour {
+
+	public GameObject part1; //Section 1
+	public GameObject part2; //Section 2
+	public GameObject part3; //Section 3
+	public GameObject part4; //Section 4
+	public GameObject part5; //Section 5 - You can add or subtract sections as necessary.
+
+	public int section; //The variable used to change between sections.
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+
+	public void OnClick_Menu() //When this function plays, you can return to the main menu. Set this function to a back to menu button.
+	{
+		Application.LoadLevel ("MainMenu"); //Returns to the main menu.
+	}
+
+	public void OnClick_Back() //When this function plays, the sections will change, resulting in you returning back a section. Set this function to a back button.
+	{
+		if (section == 0) {
+
+		} else 
+		{
+			section -= 1;
+		}
+	}
+
+	public void OnClick_Next() //When this function plays, the sections will change, resulting in you going forward. Set this function to a next button.
+	{
+		if (section == 4) {
+
+		} else 
+		{
+			section += 1;
+		}
+	}
+
+	/// <summary>
+	/// Checks a number, if it matches that number, the section will change to reflect that number.
+	/// </summary>
+
+	void SectionChange() //A function which allows you to change between sections of images if the function is as follows.
+	{
+		if (section == 0) 
+		{
+			part1.SetActive(enabled);//Enables the gameobject being set.
+			part2.SetActive(!enabled);//Disables the gameobject being set. The same goes for the other gameobjects.
+		}
+		if (section == 1) 
+		{
+			part2.SetActive(enabled);
+			part1.SetActive(!enabled);
+			part3.SetActive(!enabled);
+		}
+		if (section == 2) 
+		{
+			part3.SetActive(enabled);
+			part2.SetActive(!enabled);
+			part4.SetActive(!enabled);
+		}
+		if (section == 3) 
+		{
+			part4.SetActive(enabled);
+			part3.SetActive(!enabled);
+			part5.SetActive(!enabled);
+		}
+		if (section == 4) 
+		{
+			part5.SetActive(enabled);
+			part4.SetActive(!enabled);
+		}
+	}
+	
+	// Update is called once per frame
+	void Update () 
+	{
+		SectionChange (); //Updates the sections so that it allows the change to happen.
+	
+	}
+}
